@@ -1,0 +1,7 @@
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=Hamburg2022
+resources:
+  - mysql-deployment.yaml
+  - wordpress-deployment.yaml
