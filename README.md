@@ -1,1 +1,1 @@
-# Kubernetes-StatefulSet-MySql-WordPress
+# Kubernetes StatefulSet MySql WordPress
