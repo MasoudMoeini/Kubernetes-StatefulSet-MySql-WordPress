@@ -37,7 +37,6 @@ kubectl get services wordpress
 kubectl get service wordpress --output yaml
 curl http://localhost:80
 ```
-<img width="368" alt="Screenshot 2022-06-30 at 14 37 03" src="https://user-images.githubusercontent.com/43514418/176678716-e12a16e8-88e2-44dc-a39b-b926fe57c1ac.png">
 Exceptions
 ```
 docker pull --platform linux/x86_64 mysql
