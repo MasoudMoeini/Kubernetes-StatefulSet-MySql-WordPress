@@ -1,6 +1,8 @@
 # Kubernetes StatefulSet MySql WordPress
 Deploying WordPress and MySQL with Persistent Volumes [Reference](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/) <br>
 This web application uses Wordpress as a Frontend and MySql database as backend<br>
+Apple Silicon (M1, etc.) or a Raspberry Pi, which are both arm64 based processors,does not support MySql<br>
+Alternative change  **mysql to mariadb**   and everything should work<br>
 Both applications use PersistentVolumes and PersistentVolumeClaims to store data.<br>
 Create kustomization.yaml and add secrect for assets or credential 
 ```
