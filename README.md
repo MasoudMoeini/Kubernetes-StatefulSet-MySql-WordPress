@@ -44,7 +44,6 @@ Exceptions
 ```
 docker pull --platform linux/x86_64 mysql
 ```
-
 To Delete all resources 
 ```
 kubectl delete -k ./
