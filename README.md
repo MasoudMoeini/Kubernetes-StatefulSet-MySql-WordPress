@@ -1,51 +1,41 @@
-# Kubernetes StatefulSet MySql WordPress
-Deploying WordPress and MySQL with Persistent Volumes [Reference](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/) <br>
-This web application uses Wordpress as a Frontend and MySql database as backend<br>
-Both applications use PersistentVolumes and PersistentVolumeClaims to store data.<br>
-Create kustomization.yaml and add secrect for assets or credential 
+# Deploying Cassandra with a StatefulSet
+[Reference](https://kubernetes.io/docs/tutorials/stateful-application/cassandra/)
 ```
-cat <<EOF >./kustomization.yaml
-secretGenerator:
-- name: mysql-pass
-  literals:
-  - password={YOUR_PASSWORD}
-EOF
+kubectl apply -f cassandra-service.yaml
 ```
 ```
-cat <<EOF >>./kustomization.yaml
-resources:
-  - mysql-deployment.yaml
-  - wordpress-deployment.yaml
-EOF
+kubectl get svc cassandra
 ```
-Adding both wordpress-deployment.yaml and msql-deployment.yaml to kustomization.yaml
+Using a StatefulSet to create a Cassandra ring
 ```
-cat <<EOF >>./kustomization.yaml
-resources:
-  - mysql-deployment.yaml
-  - wordpress-deployment.yaml
-EOF
+cassandra-statefulset.yaml
+```
+Validating the Cassandra StatefulSet
+```
+kubectl get statefulset cassandra
+kubectl get pods -l="app=cassandra"
+```
+Run the Cassandra nodetool inside the first Pod, to display the status of the ring
+```
+kubectl exec -it cassandra-0 -- nodetool status
+```
+Modifying StatefulSet
+```
+kubectl edit statefulset cassandra
+```
+Change the number of replicas to 4
+```
+kubectl get statefulset cassandra
+```
+Deleting Resources 
+```
+grace=$(kubectl get pod cassandra-0 -o=jsonpath='{.spec.terminationGracePeriodSeconds}') \
+  && kubectl delete statefulset -l app=cassandra \
+  && echo "Sleeping ${grace} seconds" 1>&2 \
+  && sleep $grace \
+  && kubectl delete persistentvolumeclaim -l app=cassandra
 ```
 ```
-kubectl apply -k ./
+kubectl delete service -l app=cassandra
 ```
-Now all the resources has been created
-```
-kubectl get secrets
-kubectl get pvc
-kubectl get pods
-``` 
-If all pods are running
-```
-kubectl get services wordpress
-curl http://localhost:80
-```
-Exceptions
-```
-docker pull --platform linux/x86_64 mysql
-docker run --platform linux/x86_64 mysql:5.7 -e MYSQL_ROOT_PASSWORD=pass
-```
-To Delete all resources 
-```
-kubectl delete -k ./
-```
+
