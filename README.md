@@ -13,13 +13,6 @@ secretGenerator:
   - password={YOUR_PASSWORD}
 EOF
 ```
-```
-cat <<EOF >>./kustomization.yaml
-resources:
-  - mysql-deployment.yaml
-  - wordpress-deployment.yaml
-EOF
-```
 Adding both wordpress-deployment.yaml and msql-deployment.yaml to kustomization.yaml
 ```
 cat <<EOF >>./kustomization.yaml
@@ -28,6 +21,7 @@ resources:
   - wordpress-deployment.yaml
 EOF
 ```
+
 ```
 kubectl apply -k ./
 ```
@@ -56,3 +50,10 @@ Test mariadb image
 ```
 docker run -d -p 3306:3306 --name db -e MYSQL_ROOT_PASSWORD=mypass mariadb
 ``` 
+```
+cat <<EOF >>./kustomization.yaml
+resources:
+  - mariadb-deployment.yaml
+  - wordpress-deployment.yaml
+EOF
+```
