@@ -29,10 +29,8 @@ kubectl get statefulset cassandra
 ```
 Deleting Resources 
 ```
-grace=$(kubectl get pod cassandra-0 -o=jsonpath='{.spec.terminationGracePeriodSeconds}') \
+  kubectl delete service -l app=cassandra\
   && kubectl delete statefulset -l app=cassandra \
-  && echo "Sleeping ${grace} seconds" 1>&2 \
-  && sleep $grace \
   && kubectl delete persistentvolumeclaim -l app=cassandra
 ```
 ```
