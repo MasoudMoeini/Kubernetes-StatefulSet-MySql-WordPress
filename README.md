@@ -35,12 +35,16 @@ kubectl get secrets
 kubectl get pvc
 kubectl get pods
 ``` 
-If the pods are running 
+If all pods are running
 ```
 kubectl get services wordpress
-```
 curl http://localhost:80
 ```
+Exceptions
+```
+docker pull --platform linux/x86_64 mysql
+```
+
 To Delete all resources 
 ```
 kubectl delete -k ./
