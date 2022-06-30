@@ -34,6 +34,7 @@ kubectl get pods
 If all pods are running
 ```
 kubectl get services wordpress
+kubectl get service wordpress --output yaml
 curl http://localhost:80
 ```
 Exceptions
