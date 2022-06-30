@@ -43,6 +43,7 @@ curl http://localhost:80
 Exceptions
 ```
 docker pull --platform linux/x86_64 mysql
+docker run --platform linux/x86_64 mysql:5.7 -e MYSQL_ROOT_PASSWORD=pass
 ```
 To Delete all resources 
 ```
