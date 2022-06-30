@@ -47,6 +47,7 @@ http://wordpress-app-host.info
 ```
 Now you should see on browser <br>
 <img width="462" alt="Screenshot 2022-06-30 at 17 48 12" src="https://user-images.githubusercontent.com/43514418/176724580-b6e45689-997a-4d32-ac2b-98ed3f738f8a.png">
+<br>
 If pods are not running test mysql image on your system <br>
 ```
 docker pull --platform linux/x86_64 mysql
