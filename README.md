@@ -1,4 +1,4 @@
-# Kubernetes MySql WordPress
+# Kubernetes deployment for WordPress Mysql 
 Deploying WordPress and MySQL with Persistent Volumes [Reference](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/) <br>
 This web application uses Wordpress as a Frontend and MySql database as backend<br>
 Apple Silicon (M1, etc.) or a Raspberry Pi, which are both arm64 based processors,<br>
