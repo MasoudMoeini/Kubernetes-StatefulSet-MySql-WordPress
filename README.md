@@ -51,3 +51,8 @@ To Delete all resources
 ```
 kubectl delete -k ./
 ```
+# MariaDb WordPress
+Test mariadb image
+```
+docker run -d -p 3306:3306 --name db -e MYSQL_ROOT_PASSWORD=mypass mariadb
+``` 

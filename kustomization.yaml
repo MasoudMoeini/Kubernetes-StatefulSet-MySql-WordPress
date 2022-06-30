@@ -3,5 +3,6 @@ secretGenerator:
   literals:
   - password=Hamburg2022
 resources:
-  - mysql-deployment.yaml
+  #- mysql-deployment.yaml
+  - mariadb-deployment.yaml
   - wordpress-deployment.yaml
