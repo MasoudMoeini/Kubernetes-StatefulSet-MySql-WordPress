@@ -31,17 +31,27 @@ kubectl get secrets
 kubectl get pvc
 kubectl get pods
 ``` 
-If all pods are running
+If all pods are running, to access the wordpredd web application via ingress 
 ```
 kubectl get services wordpress
-kubectl get service wordpress --output yaml
-curl http://localhost:80
 ```
-Exceptions
+```
+kubectl apply -f wordpress-ingress.yaml
+```
+```
+kubectl get ingress
+```
+Update /etc/hosts file with "127.0.0.1 wordpress-app-host.info" at the last line [Instruction](https://help.nexcess.net/en_US/miscellaneous/how-to-find-the-hosts-file-on-my-mac)
+```
+http://wordpress-app-host.info 
+```
+Now you should see on browser <br>
+If pods are not running test mysql image on your system <br>
 ```
 docker pull --platform linux/x86_64 mysql
 docker run --platform linux/x86_64 mysql:5.7 -e MYSQL_ROOT_PASSWORD=pass
 ```
+If mysql image is not working use mariadb-deployment.yaml for deployment 
 To Delete all resources 
 ```
 kubectl delete -k ./
