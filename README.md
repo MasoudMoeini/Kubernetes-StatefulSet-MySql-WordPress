@@ -11,6 +11,9 @@ kubectl get secrets
 kubectl get pvc
 kubectl get pods
 ``` 
+``` 
+kubectl get statefulset
+```
 If all pods are running, to access the wordpredd web application via ingress 
 ```
 kubectl get services wordpress
