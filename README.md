@@ -32,7 +32,7 @@ Scalling Statefulset
 ```
 kubectl get pods -w -l app=wordpress-mysql
 kubectl scale sts wordpress-mysql --replicas=5
-kubectl get pods -w -l app=nginx
+kubectl get pods -l app=wordpress-mysql
 kubectl patch sts wordpress-mysql -p '{"spec":{"replicas":3}}'
 ```
 To Delete all resources 
