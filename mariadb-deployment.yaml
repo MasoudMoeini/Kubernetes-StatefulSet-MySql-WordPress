@@ -32,12 +32,12 @@ metadata:
   labels:
     app: wordpress
 spec:
+  serviceName: "wordpress-mysql"
+  replicas: 3
   selector:
     matchLabels:
       app: wordpress
       tier: mysql
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
