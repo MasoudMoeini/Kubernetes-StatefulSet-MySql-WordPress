@@ -28,6 +28,13 @@ Update /etc/hosts file with "127.0.0.1 wordpress-app-host.info" at the last line
 ```
 http://wordpress-app-host.info 
 ```
+Scalling Statefulset 
+```
+kubectl get pods -w -l app=wordpress-mysql
+kubectl scale sts wordpress-mysql --replicas=5
+kubectl get pods -w -l app=nginx
+kubectl patch sts wordpress-mysql -p '{"spec":{"replicas":3}}'
+```
 To Delete all resources 
 ```
 kubectl delete -k ./
